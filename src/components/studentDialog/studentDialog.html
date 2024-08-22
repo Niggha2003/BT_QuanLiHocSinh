@@ -1,0 +1,42 @@
+<!-- link css cho student add dialog -->
+<link rel="stylesheet" href="./src/components/studentDialog/studentDialog.style.css">
+
+<!-- Giao diện để thêm mới sinh viên và sửa thông tin sinh viên -->
+
+<md-dialog class="student-dialog" aria-label="List dialog">
+  <md-dialog-content>
+    <div layout="column" layout-fill="">
+      <h2 class="student-dialog-title">{{ dialogTitle }}</h2>
+      
+      <div class="student-dialog-input" layout="row">
+        <label>Họ và tên*: </label>
+        <md-input-container flex>
+          <input type="text" ng-model="student.name" required="" aria-label="Họ và tên">
+        </md-input-container>
+      </div>
+      
+      <div class="student-dialog-input" layout="row">
+        <label>Ngày sinh: </label>
+        <md-input-container flex>
+          <input type="date" format="dd/mm/yyyy" ng-model="student.birthday" md-hide-icons="calendar" required="" aria-label="Ngày sinh"></input>
+        </md-input-container>
+      </div>
+      
+      <div class="student-dialog-input" layout="row">
+        <label>Lớp: </label>
+        <md-select class="student-option-course" ng-model="student.course" placeholder="Chọn lớp" required="" aria-label="Lớp">
+          <md-option ng-value="null">Chọn lớp</md-option>
+          <md-option ng-value="course.name" ng-repeat="course in courseList">Lớp {{ course.name }} - Thuộc lớp {{ course.course }}</md-option>
+        </md-select>
+      </div>
+      
+      <div class="student-dialog-status">{{ status }}</div>
+      
+      <md-button class="student-dialog-btn md-primary" ng-click="changeStudent()">{{ dialogTitle }}</md-button>
+    </div>
+  </md-dialog-content>
+
+  <md-dialog-actions>
+    <md-button ng-click="closeDialog()" class="md-primary">Đóng</md-button>
+  </md-dialog-actions>
+</md-dialog>

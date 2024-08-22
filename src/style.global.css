@@ -1,0 +1,50 @@
+/* Basic CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+img, picture, video, canvas {
+  max-width: 100%;
+  display: block;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  margin: 0;
+}
+
+a,
+a:hover {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+table {
+  width: 100%;
+}
+
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 10px;
+  text-align: center;
+}
+
+table tr:nth-child(odd) {
+  background-color: #e3e3e3;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}

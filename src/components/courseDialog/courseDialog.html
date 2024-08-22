@@ -1,0 +1,50 @@
+<!-- link css cho course add dialog -->
+<link rel="stylesheet" href="./src/components/courseDialog/courseDialog.style.css">
+
+<!-- Giao diện để thêm mới khóa học và sửa thông tin khóa học -->
+
+<md-dialog class="course-dialog" aria-label="List dialog">
+  <md-dialog-content>
+    <div layout="column" layout-fill="">
+      <h2 class="course-dialog-title">{{ title }}</h2>
+      
+      <div ng-show="!oldCourseKeyName" class="course-dialog-input" layout="row">
+        <label>Tên lớp*: </label>
+        <md-input-container flex>
+          <input type="text" ng-model="course.name" required="" aria-label="Tên lớp">
+        </md-input-container>
+      </div>
+
+      <div ng-show="!oldCourseKeyName" class="course-dialog-input" layout="row" >
+        <label>Thêm lớp mới: </label>
+        <md-input-container flex>
+          <input type="text" ng-model="newCourseKeyName" aria-label="Tên lớp" ng-change="choseCourseKey('text')">
+        </md-input-container>
+      </div>
+      
+      <div ng-show="!oldCourseKeyName" class="course-dialog-input" layout="row">
+        <label>Thuộc: </label>
+        <md-select ng-model="course.course" placeholder="Chọn lớp" aria-label="Lớp" ng-change="choseCourseKey('select')">
+          <md-option ng-value="null">Chọn lớp</md-option>
+          <md-option ng-value="courseKey" ng-repeat="courseKey in courseKeyList">Lớp {{ courseKey }}</md-option>
+        </md-select>
+      </div>
+
+      <div ng-show="oldCourseKeyName" class="course-dialog-input" layout="row" ng-init="newCourseKeyName = oldCourseKeyName">
+        <label>Tên lớp mới: </label>
+        <md-input-container flex>
+          <input type="text" ng-model="newCourseKeyName" required="" aria-label="Tên lớp" ng-change="course.course = null">
+        </md-input-container>
+      </div>
+      
+      <div class="course-dialog-status">{{ status }}</div>
+
+      <md-button ng-if="dialogTitle === 'add'" class="course-dialog-btn md-primary" ng-click="addCourse()">{{ title }}</md-button>
+      <md-button ng-if="dialogTitle === 'update'" class="course-dialog-btn md-primary" ng-click="changeCourse()">{{ title }}</md-button>
+    </div>
+  </md-dialog-content>
+
+  <md-dialog-actions>
+    <md-button ng-click="closeDialog()" class="md-primary">Đóng</md-button>
+  </md-dialog-actions>
+</md-dialog>

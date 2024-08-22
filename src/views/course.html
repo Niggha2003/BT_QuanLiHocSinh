@@ -1,0 +1,29 @@
+<!-- link css cho course -->
+<link rel="stylesheet" href="./src/assets/styles/course.css">
+
+<div class="course" layout="column" layout-fill="">
+  <div class="mt-5 mb-3 ml-4 course-option" layout="row">
+    <div class="course-option-add" flex>
+      <md-button class="course-option-add-btn md-raised md-primary" ng-click="courseDialogOpen($event, 'add')"> Tạo lớp </md-button>
+    </div>
+  </div>
+  <div class="mx-2 course-list">
+    <table border="1">
+      <tr>
+        <th ng-repeat="title in courseTableTitles">{{ title }}</th>
+      </tr>
+      <tr ng-repeat="(index, course) in tableCourseData">
+        <td>{{ index + 1 }}</td>
+        <td ng-if="course.type === 'key'">{{ course.value }}</td>
+        <td ng-if="course.type === 'value'">---- {{ course.value }}</td>
+        <td width="20%">
+          <md-button ng-if="course.type === 'key'" class="course-list-btn--update md-primary" ng-click="courseDialogOpen($event, 'update', index, course, course.value)">Sửa</md-button>
+          <md-button ng-if="course.type === 'value'" class="course-list-btn--update md-primary" ng-click="courseDialogOpen($event, 'update', course.index, course)">Sửa</md-button>
+          <md-button ng-if="course.type === 'key'" class="course-list-btn--delete md-primary" ng-click="deleteCourseKey(course.value)">Xóa</md-button>
+          <md-button ng-if="course.type === 'value'" class="course-list-btn--delete md-primary" ng-click="deleteCourse(course.index)">Xóa</md-button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+

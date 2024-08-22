@@ -1,0 +1,13 @@
+.header .logo {
+  color: #ffeb3b;
+  font-weight: bold;
+}
+
+.header .md-nav-item a {
+  color: white !important;
+  font-weight: bold;
+}
+
+.header .md-nav-item a.md-active {
+  color: rgb(255, 64, 129) !important; 
+}
