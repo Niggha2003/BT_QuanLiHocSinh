@@ -31,7 +31,7 @@ app.controller('StudentController', function ($scope, $mdDialog) {
     $scope.students = studentFunc.getStudents();
 
     $scope.students = $scope.students.filter(function (student) {
-      return student.course.includes($scope.studentViewCourse);
+      return student.course === $scope.studentViewCourse;
     });
   };
 
