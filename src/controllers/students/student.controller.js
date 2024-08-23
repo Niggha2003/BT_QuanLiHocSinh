@@ -1,11 +1,15 @@
 import studentFunc from '../../services/studentFunc.js';
 import studentDialogOpen from './studentDialogOpen.js';
+import courseFunc from '../../services/courseFunc.js';
 
 app.controller('StudentController', function ($scope, $mdDialog) {
   $scope.studentTableTitles = ['#', 'Họ và tên', 'Tuổi', 'Lớp', 'Thao tác'];
 
   // mặc định trạng thái xem danh sách sinh viên là tất cả
   $scope.studentViewCourse = 'all';
+
+  // danh sách lớp cho sinh viên
+  $scope.courseList = courseFunc.getCourses();
 
   $scope.students = studentFunc.getStudents();
 

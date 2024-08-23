@@ -5,10 +5,7 @@
   <div class="mt-5 mb-3 ml-4 student-option" layout="row">
     <md-select class="student-option-course" ng-model="studentViewCourse" aria-label="Lớp" ng-change="filterByCourse()">
       <md-option ng-value="'all'">Tất cả các lớp</md-option>
-      <md-option ng-value="'11A'">Lớp 11A</md-option>
-      <md-option ng-value="'11B'">Lớp 11B</md-option>
-      <md-option ng-value="'12A'">Lớp 12A</md-option>
-      <md-option ng-value="'12B'">Lớp 12B</md-option>
+      <md-option ng-value="course.name" ng-repeat="course in courseList">Lớp {{ course.name }} - Thuộc lớp {{ course.course }}</md-option>
     </md-select>
     <div class="student-option-find">
       <md-input-container>
@@ -35,6 +32,7 @@
         </td>
       </tr>
     </table>
+    <div ng-if="students.length === 0">Không có học sinh nào!!!</div>
   </div>
 </div>
 

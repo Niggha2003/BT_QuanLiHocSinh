@@ -4,7 +4,7 @@ import courseFunc from '../../services/courseFunc.js';
 app.controller('StudentDialogController', function ($scope, $mdDialog, student, dialogTitle, index) {
   $scope.student = student;
 
-  // danh sách lớp cho sinh viên với
+  // danh sách lớp cho sinh viên
   $scope.courseList = courseFunc.getCourses();
 
   // Hiển thị tiêu đề khác nhau cho từng chức năng
