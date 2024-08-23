@@ -1,7 +1,7 @@
 import studentFunc from '../../services/studentFunc.js';
 import courseFunc from '../../services/courseFunc.js';
 
-app.controller('StudentDialogController', function ($scope, $mdDialog, student, dialogTitle, index) {
+app.controller('StudentDialogController', function ($scope, $mdDialog, student, dialogTitle, id) {
   $scope.student = student;
 
   // danh sách lớp cho sinh viên
@@ -14,8 +14,7 @@ app.controller('StudentDialogController', function ($scope, $mdDialog, student, 
    * Tắt đi và không làm gì thì trả lại mảng ban đầu cho students
    */
   $scope.closeDialog = function () {
-    var students = studentFunc.getStudents();
-    $mdDialog.hide(students);
+    $mdDialog.cancel();
   };
 
   /*
@@ -28,9 +27,7 @@ app.controller('StudentDialogController', function ($scope, $mdDialog, student, 
       $scope.status = 'Tên không được chứa số';
     } else {
       var result =
-        dialogTitle === 'add'
-          ? studentFunc.addStudent($scope.student)
-          : studentFunc.updateStudent(index, $scope.student);
+        dialogTitle === 'add' ? studentFunc.addStudent($scope.student) : studentFunc.updateStudent(id, $scope.student);
       $mdDialog.hide(result);
     }
   };

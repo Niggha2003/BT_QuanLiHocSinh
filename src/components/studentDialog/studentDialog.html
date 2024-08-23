@@ -26,7 +26,7 @@
         <label>Lớp: </label>
         <md-select class="student-option-course" ng-model="student.course" placeholder="Chọn lớp" required="" aria-label="Lớp">
           <md-option ng-value="null">Chọn lớp</md-option>
-          <md-option ng-value="course.name" ng-repeat="course in courseList">Lớp {{ course.name }} - Thuộc lớp {{ course.course }}</md-option>
+          <md-option ng-value="course.name" ng-repeat="course in courseList">Lớp {{ course.name }}</md-option>
         </md-select>
       </div>
       

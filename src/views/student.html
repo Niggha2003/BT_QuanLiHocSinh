@@ -5,7 +5,7 @@
   <div class="mt-5 mb-3 ml-4 student-option" layout="row">
     <md-select class="student-option-course" ng-model="studentViewCourse" aria-label="Lớp" ng-change="filterByCourse()">
       <md-option ng-value="'all'">Tất cả các lớp</md-option>
-      <md-option ng-value="course.name" ng-repeat="course in courseList">Lớp {{ course.name }} - Thuộc lớp {{ course.course }}</md-option>
+      <md-option ng-value="course.name" ng-repeat="course in courseList">Lớp {{ course.name }}</md-option>
     </md-select>
     <div class="student-option-find">
       <md-input-container>
@@ -27,8 +27,8 @@
         <td width="15%">{{ calculateAge(student.birthday) }}</td>
         <td width="15%">{{ student.course }}</td>
         <td width="20%">
-          <md-button class="student-list-btn--update md-primary" ng-click="studentDialogOpen($event, 'update', index, student)">Sửa</md-button>
-          <md-button class="student-list-btn--delete md-primary" ng-click="deleteStudent(index)">Xóa</md-button>
+          <md-button class="student-list-btn--update md-primary" ng-click="studentDialogOpen($event, 'update', student.id, student)">Sửa</md-button>
+          <md-button class="student-list-btn--delete md-primary" ng-click="deleteStudent(student.id)">Xóa</md-button>
         </td>
       </tr>
     </table>

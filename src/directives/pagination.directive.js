@@ -78,6 +78,7 @@ app.directive('paginationDirective', function () {
       };
 
       scope.changeItemsPerPage = function () {
+        scope.currentPage = 1;
         scope.totalPages = Math.ceil(scope.items.length / scope.itemsPerPage);
         // tạo 1 mảng có độ dài là scope.totalPages bao gồm các phần tử từ 1 đến nó
         scope.pages = Array.from({ length: scope.totalPages }, (_, i) => i + 1);

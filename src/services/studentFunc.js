@@ -18,6 +18,7 @@ function getStudents() {
 var addStudent = function (data) {
   var students = getStudents();
 
+  data.id = new Date().getTime();
   students.push(data);
   localStorageFunc.setData('students', students);
 
@@ -25,28 +26,33 @@ var addStudent = function (data) {
 };
 
 /*
- * @index: Integer, index của sinh viên đó trong 'students'
+ * @id: Integer, id của sinh viên đó trong 'students'
  * @data: Object, Thông tin của sinh viên được thay thế
  * Sửa thông tin sinh viên trong localStorage 'students'
  */
-var updateStudent = function (index, data) {
+var updateStudent = function (id, data) {
   var students = getStudents();
 
-  // Tạo bản sao của đối tượng và thay thế đối tượng cũ do nếu thay đổi phần tử theo index bị lỗi lỗi dupes
-  students = students.map((student, idx) => (idx === index ? data : student));
+  // Tạo bản sao của đối tượng và thay thế đối tượng cũ do nếu thay đổi phần tử theo id bị lỗi lỗi dupes
+  students = students.map((student) => (student.id === id ? data : student));
+
   localStorageFunc.setData('students', students);
 
   return students;
 };
 
 /*
- * @index: Integer, index của sinh viên đó trong 'students'
+ * @id: Integer, id của sinh viên đó trong 'students'
  *  Xóa thông tin sinh viên khỏi localStorage 'students'
  */
-var deleteStudent = function (index) {
+var deleteStudent = function (id) {
   var students = getStudents();
 
-  students.splice(index, 1);
+  var studentDeleteIndex = students.findIndex(function (student) {
+    return student.id === id;
+  });
+
+  students.splice(studentDeleteIndex, 1);
   localStorageFunc.setData('students', students);
 
   return students;

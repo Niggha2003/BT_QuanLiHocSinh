@@ -8,27 +8,24 @@
     </div>
   </div>
   <div class="mx-2 course-list">
-    <table border="1">
+    <table class="mb-3" border="1">
       <tr>
         <th ng-repeat="title in courseTableTitles">{{ title }}</th>
       </tr>
       <tr ng-repeat="(index, course) in paginatedCourses">
         <td width="10%">{{ index + 1 }}</td>
-        <td ng-if="course.type === 'key'">{{ course.value }}</td>
-        <td ng-if="course.type === 'value'">---- {{ course.value }}</td>
+        <td>{{ course.name }}</td>
         <td width="20%">
-          <md-button ng-if="course.type === 'key'" class="course-list-btn--update md-primary" ng-click="courseDialogOpen($event, 'update', index, course, course.value)">Sửa</md-button>
-          <md-button ng-if="course.type === 'value'" class="course-list-btn--update md-primary" ng-click="courseDialogOpen($event, 'update', course.index, course)">Sửa</md-button>
-          <md-button ng-if="course.type === 'key'" class="course-list-btn--delete md-primary" ng-click="deleteCourseKey(course.value)">Xóa</md-button>
-          <md-button ng-if="course.type === 'value'" class="course-list-btn--delete md-primary" ng-click="deleteCourse(course.index)">Xóa</md-button>
+          <md-button class="course-list-btn--update md-primary" ng-click="courseDialogOpen($event, 'update', course.id, course)">Sửa</md-button>
+          <md-button class="course-list-btn--delete md-primary" ng-click="deleteCourse(course.id)">Xóa</md-button>
         </td>
       </tr>
     </table>
-    <div ng-if="tableCourseData.length === 0">Không có lớp nào!!!</div>
+    <div ng-if="course.length === 0">Không có lớp nào!!!</div>
     <div layout="row" layout-align="center center">
       <!-- Directive cho phân trang -->
       <pagination-directive 
-        items="tableCourseData" 
+        items="courses" 
         items-per-page="5" 
         on-page-change="updatePaginatedCourses(paginatedItems)">
       </pagination-directive>

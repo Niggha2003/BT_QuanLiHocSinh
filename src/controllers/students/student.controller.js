@@ -30,6 +30,9 @@ app.controller('StudentController', function ($scope, $mdDialog) {
   $scope.filterByCourse = function () {
     $scope.students = studentFunc.getStudents();
 
+    if ($scope.studentViewCourse === 'all') {
+      return;
+    }
     $scope.students = $scope.students.filter(function (student) {
       return student.course === $scope.studentViewCourse;
     });
@@ -40,7 +43,6 @@ app.controller('StudentController', function ($scope, $mdDialog) {
    */
   $scope.filterByText = function () {
     $scope.students = studentFunc.getStudents();
-    console.log(12);
 
     $scope.students = $scope.students.filter(function (student) {
       var birthDate = new Date(student.birthday);
@@ -55,23 +57,24 @@ app.controller('StudentController', function ($scope, $mdDialog) {
   };
 
   /*
-   * @index: Integer, index của sinh viên trong 'students'
+   * @id: Integer, id của sinh viên trong 'students'
    * Xóa sinh viên trong 'students'
    */
-  $scope.deleteStudent = function (index) {
-    studentFunc.deleteStudent(index);
+  $scope.deleteStudent = function (id) {
+    studentFunc.deleteStudent(id);
     $scope.students = studentFunc.getStudents();
   };
 
   /*
    * Mở dialog
    */
-  $scope.studentDialogOpen = function (ev, dialogTitle, index, student) {
-    studentDialogOpen(ev, dialogTitle, index, student, $scope, $mdDialog);
+  $scope.studentDialogOpen = function (ev, dialogTitle, id, student) {
+    studentDialogOpen(ev, dialogTitle, id, student, $scope, $mdDialog);
   };
 
   /*
    * Hàm nhận kết quả từ directive khi paginator thay đổi
+   * Thay đổi trang mở hiện tại
    */
   $scope.updatePaginatedStudents = function (paginatedItems) {
     $scope.paginatedStudents = paginatedItems;

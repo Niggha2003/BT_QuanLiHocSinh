@@ -2,11 +2,16 @@ import studentFunc from '../../services/studentFunc.js';
 
 /*
  * @dialogTitle: String, loại dialog - có thể là update, add
- * @index: Integer, index của sinh viên được chọn để mở dialog
+ * @id: Integer, id của sinh viên được chọn để mở dialog
  * @student: Object, thông tin sinh viên được mở
  * Mở giao diện dialog
  */
-var studentDialogOpen = function (ev, dialogTitle, index, student, $scope, $mdDialog) {
+var studentDialogOpen = function (ev, dialogTitle, id, student, $scope, $mdDialog) {
+  if (student && student.birthday) {
+    // chuyển kiểu date string về kiểu date
+    student.birthday = new Date(student.birthday);
+  }
+
   $mdDialog
     .show({
       controller: 'StudentDialogController',
@@ -18,7 +23,7 @@ var studentDialogOpen = function (ev, dialogTitle, index, student, $scope, $mdDi
       locals: {
         student: student,
         dialogTitle: dialogTitle,
-        index: index,
+        id: id,
       },
     })
     .then(
