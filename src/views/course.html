@@ -12,8 +12,8 @@
       <tr>
         <th ng-repeat="title in courseTableTitles">{{ title }}</th>
       </tr>
-      <tr ng-repeat="(index, course) in tableCourseData">
-        <td>{{ index + 1 }}</td>
+      <tr ng-repeat="(index, course) in paginatedCourses">
+        <td width="10%">{{ index + 1 }}</td>
         <td ng-if="course.type === 'key'">{{ course.value }}</td>
         <td ng-if="course.type === 'value'">---- {{ course.value }}</td>
         <td width="20%">
@@ -24,6 +24,15 @@
         </td>
       </tr>
     </table>
+    <div ng-if="tableCourseData.length === 0">Không có lớp nào!!!</div>
+    <div layout="row" layout-align="center center">
+      <!-- Directive cho phân trang -->
+      <pagination-directive 
+        items="tableCourseData" 
+        items-per-page="5" 
+        on-page-change="updatePaginatedCourses(paginatedItems)">
+      </pagination-directive>
+    </div>
   </div>
 </div>
 

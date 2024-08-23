@@ -9,7 +9,7 @@
     </md-select>
     <div class="student-option-find">
       <md-input-container>
-        <input name="studentFindInput" ng-model="studentFindInput" placeholder="Nhập để tìm kiếm">
+        <input name="studentFindInput" ng-model="studentFindInput" placeholder="Nhập để tìm kiếm" ng-change="filterByText()">
       </md-input-container>
     </div>
     <div class="student-option-add" flex>
@@ -17,15 +17,15 @@
     </div>
   </div>
   <div class="mx-2 student-list">
-    <table border="1">
+    <table class="mb-5" border="1">
       <tr>
         <th ng-repeat="title in studentTableTitles">{{ title }}</th>
       </tr>
-      <tr ng-repeat="(index, student) in students | customStudentFilter:studentFindInput">
-        <td>{{ index + 1 }}</td>
-        <td>{{ student.name }}</td>
-        <td>{{ calculateAge(student.birthday) }}</td>
-        <td>{{ student.course }}</td>
+      <tr ng-repeat="(index, student) in paginatedStudents">
+        <td width="10%">{{ index + 1 }}</td>
+        <td width="40%">{{ student.name }}</td>
+        <td width="15%">{{ calculateAge(student.birthday) }}</td>
+        <td width="15%">{{ student.course }}</td>
         <td width="20%">
           <md-button class="student-list-btn--update md-primary" ng-click="studentDialogOpen($event, 'update', index, student)">Sửa</md-button>
           <md-button class="student-list-btn--delete md-primary" ng-click="deleteStudent(index)">Xóa</md-button>
@@ -33,6 +33,14 @@
       </tr>
     </table>
     <div ng-if="students.length === 0">Không có học sinh nào!!!</div>
+    <div layout="row" layout-align="center center">
+      <!-- Directive cho phân trang -->
+      <pagination-directive 
+        items="students" 
+        items-per-page="5" 
+        on-page-change="updatePaginatedStudents(paginatedItems)">
+      </pagination-directive>
+    </div>
   </div>
 </div>
 

@@ -11,3 +11,26 @@
 .header .md-nav-item a.md-active {
   color: rgb(255, 64, 129) !important; 
 }
+
+/* directive css */
+.pagination-directive {
+  user-select: none;
+}
+
+.pagination-directive .page.active {
+  background-color: #86938e !important;
+  color: wheat;
+}
+
+.pagination-directive .page {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: center
+}
+
+.pagination-directive .page:hover {
+  background-color: #a1a1a13f;
+}

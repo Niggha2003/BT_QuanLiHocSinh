@@ -36,6 +36,25 @@ app.controller('StudentController', function ($scope, $mdDialog) {
   };
 
   /*
+   * Tìm kiếm thông tin sinh viên dựa trên studentFindInput
+   */
+  $scope.filterByText = function () {
+    $scope.students = studentFunc.getStudents();
+    console.log(12);
+
+    $scope.students = $scope.students.filter(function (student) {
+      var birthDate = new Date(student.birthday);
+      var age = new Date().getFullYear() - birthDate.getFullYear();
+
+      return (
+        student.name.toLowerCase().includes($scope.studentFindInput) ||
+        age.toString().toLowerCase().includes($scope.studentFindInput) ||
+        student.course.toLowerCase().includes($scope.studentFindInput)
+      );
+    });
+  };
+
+  /*
    * @index: Integer, index của sinh viên trong 'students'
    * Xóa sinh viên trong 'students'
    */
@@ -49,5 +68,12 @@ app.controller('StudentController', function ($scope, $mdDialog) {
    */
   $scope.studentDialogOpen = function (ev, dialogTitle, index, student) {
     studentDialogOpen(ev, dialogTitle, index, student, $scope, $mdDialog);
+  };
+
+  /*
+   * Hàm nhận kết quả từ directive khi paginator thay đổi
+   */
+  $scope.updatePaginatedStudents = function (paginatedItems) {
+    $scope.paginatedStudents = paginatedItems;
   };
 });

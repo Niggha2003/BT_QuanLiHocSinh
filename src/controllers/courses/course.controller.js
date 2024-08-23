@@ -41,4 +41,11 @@ app.controller('CourseController', function ($scope, $mdDialog) {
   $scope.courseDialogOpen = function (ev, dialogTitle, index, course, oldCourseKeyName) {
     courseDialogOpen(ev, dialogTitle, index, course, oldCourseKeyName, $scope, $mdDialog);
   };
+
+  /*
+   * Hàm nhận kết quả từ directive khi paginator thay đổi
+   */
+  $scope.updatePaginatedCourses = function (paginatedItems) {
+    $scope.paginatedCourses = paginatedItems;
+  };
 });
