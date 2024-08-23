@@ -1,11 +1,12 @@
 import localStorageFunc from './localStorageFunc.js';
 import studentFunc from './studentFunc.js';
+import courseFunc from './courseFunc.js';
 
 /*
  * Lấy danh sách lớp bao từ localStorage 'courses'
  */
 function getCourseKeys() {
-  var courses = localStorageFunc.getData('courses');
+  var courses = courseFunc.getCourses();
   var newData = {};
   var courseKeys = [];
 
@@ -25,7 +26,7 @@ function getCourseKeys() {
  * Sửa thông tin lớp bao trong localStorage 'courses'
  */
 var updateCourseKey = function (oldCourseKeyName, newCourseKeyName) {
-  var courses = localStorageFunc.getData('courses');
+  var courses = courseFunc.getCourses();
 
   // Tạo bản sao của đối tượng và thay thế đối tượng cũ do nếu thay đổi phần tử theo index bị lỗi lỗi dupes
   courses = courses.map((course) => {
@@ -46,7 +47,7 @@ var updateCourseKey = function (oldCourseKeyName, newCourseKeyName) {
  *
  */
 var deleteCourseKey = function (name) {
-  var courses = localStorageFunc.getData('courses');
+  var courses = courseFunc.getCourses();
   var students = studentFunc.getStudents();
 
   var deletedCourses = courses.filter(function (course) {

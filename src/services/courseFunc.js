@@ -31,7 +31,7 @@ var addCourse = function (data) {
  * Sửa thông tin lớp học trong localStorage 'courses'
  */
 var updateCourse = function (index, data) {
-  var courses = localStorageFunc.getData('courses');
+  var courses = getCourses();
 
   // Tạo bản sao của đối tượng và thay thế đối tượng cũ do nếu thay đổi phần tử theo index bị lỗi lỗi dupes
   courses = courses.map((course, idx) => (idx === index ? data : course));
@@ -46,7 +46,7 @@ var updateCourse = function (index, data) {
  * Xóa thông tin lớp học khỏi localStorage 'courses' và các học sinh theo lớp học đó
  */
 var deleteCourse = function (index) {
-  var courses = localStorageFunc.getData('courses');
+  var courses = getCourses();
   var deleteCourse = courses.splice(index, 1);
   var students = studentFunc.getStudents();
 
