@@ -1,6 +1,7 @@
+import './courseDialog.style.scss';
 import courseFunc from '../../services/courseFunc.js';
 
-app.controller('CourseDialogController', function ($scope, $mdDialog, course, dialogTitle, id) {
+angular.module('myApp').controller('CourseDialogController', function ($scope, $mdDialog, course, dialogTitle, id) {
   $scope.course = course;
 
   // Hiển thị tiêu đề khác nhau cho từng chức năng

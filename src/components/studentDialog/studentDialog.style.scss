@@ -1,0 +1,32 @@
+.student-dialog {
+  width: 50%;
+  padding: 20px;
+  
+  .student-dialog-title {
+    font-weight: bold;
+    color: #ccc;
+    margin: 0 20px 20px 20px;
+  }
+
+  .student-dialog-input md-input-container {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+
+  .student-dialog-input md-select {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+
+  .student-dialog-btn {
+    margin: 20px 0;
+    color: green !important;
+  }
+
+  .student-dialog-status {
+    color: red;
+    margin-top: 10px;
+  }
+}

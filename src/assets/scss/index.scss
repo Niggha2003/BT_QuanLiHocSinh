@@ -1,0 +1,41 @@
+.header {
+  .logo {
+    color: #ffeb3b;
+    font-weight: bold;
+  }
+  
+  .md-nav-item {
+    a {
+      color: white !important;
+      font-weight: bold;
+    }
+
+    a.md-active {
+      color: rgb(255, 64, 129) !important; 
+    }
+  }
+}
+
+/* directive css */
+.pagination-directive {
+  user-select: none;
+
+  .page {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center
+  }
+
+  .page.active {
+    background-color: #86938e !important;
+    color: wheat;
+  }
+  
+  .page:hover {
+    background-color: #a1a1a13f;
+  }
+}
+

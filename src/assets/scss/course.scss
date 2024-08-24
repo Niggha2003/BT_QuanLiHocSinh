@@ -1,0 +1,18 @@
+.course {
+  background-color: white;
+
+  .course-option-add {
+    position: relative;
+    height: 50px;
+  }
+  
+  .course-option-add-btn {
+    position: absolute;
+    right: 0;
+  }
+  
+  .course-list-btn--delete {
+    color: rgb(255, 61, 61) !important;
+  }
+}
+

@@ -15,7 +15,7 @@ var studentDialogOpen = function (ev, dialogTitle, id, student, $scope, $mdDialo
   $mdDialog
     .show({
       controller: 'StudentDialogController',
-      templateUrl: './src/components/studentDialog/studentDialog.html',
+      templateUrl: '../../components/studentDialog/studentDialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
@@ -30,12 +30,14 @@ var studentDialogOpen = function (ev, dialogTitle, id, student, $scope, $mdDialo
       function (newStudentsList) {
         if (newStudentsList) {
           $scope.students = newStudentsList;
+          $scope.filterByCourse();
+          $scope.filterByText();
         }
       },
       function () {
         // Thực hiện gì đó khi dialog bị đóng, ví dụ click outside hoặc nhấn Cancel
         // reset lại data student
-        $scope.students = studentFunc.getStudents();
+        $scope.filter();
       },
     );
 };

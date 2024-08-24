@@ -10,7 +10,7 @@ var courseDialogOpen = function (ev, dialogTitle, id, course, $scope, $mdDialog)
   $mdDialog
     .show({
       controller: 'CourseDialogController',
-      templateUrl: './src/components/courseDialog/courseDialog.html',
+      templateUrl: '../../components/courseDialog/courseDialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,

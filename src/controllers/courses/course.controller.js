@@ -1,7 +1,7 @@
 import courseFunc from '../../services/courseFunc.js';
 import courseDialogOpen from './courseDialogOpen.js';
 
-app.controller('CourseController', function ($scope, $mdDialog) {
+angular.module('myApp').controller('CourseController', function ($scope, $mdDialog) {
   $scope.courses = courseFunc.getCourses();
   $scope.courseTableTitles = ['#', 'Lớp', 'Thao tác'];
 

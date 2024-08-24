@@ -1,4 +1,4 @@
-app.directive('paginationDirective', function () {
+angular.module('myApp').directive('paginationDirective', function () {
   return {
     restrict: 'E',
     scope: {

@@ -1,7 +1,8 @@
+import './studentDialog.style.scss';
 import studentFunc from '../../services/studentFunc.js';
 import courseFunc from '../../services/courseFunc.js';
 
-app.controller('StudentDialogController', function ($scope, $mdDialog, student, dialogTitle, id) {
+angular.module('myApp').controller('StudentDialogController', function ($scope, $mdDialog, student, dialogTitle, id) {
   $scope.student = student;
 
   // danh sách lớp cho sinh viên

@@ -1,15 +1,12 @@
-<!-- link css cho student -->
-<link rel="stylesheet" href="./src/assets/styles/student.css">
-
 <div class="student" layout="column" layout-fill="">
   <div class="mt-5 mb-3 ml-4 student-option" layout="row">
-    <md-select class="student-option-course" ng-model="studentViewCourse" aria-label="Lớp" ng-change="filterByCourse()">
+    <md-select class="student-option-course" ng-model="studentViewCourse" aria-label="Lớp" ng-change="filter()">
       <md-option ng-value="'all'">Tất cả các lớp</md-option>
       <md-option ng-value="course.name" ng-repeat="course in courseList">Lớp {{ course.name }}</md-option>
     </md-select>
     <div class="student-option-find">
       <md-input-container>
-        <input name="studentFindInput" ng-model="studentFindInput" placeholder="Nhập để tìm kiếm" ng-change="filterByText()">
+        <input name="studentFindInput" ng-model="studentFindInput" placeholder="Nhập để tìm kiếm" ng-change="filter()">
       </md-input-container>
     </div>
     <div class="student-option-add" flex>

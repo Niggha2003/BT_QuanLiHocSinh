@@ -2,7 +2,7 @@ import studentFunc from '../../services/studentFunc.js';
 import studentDialogOpen from './studentDialogOpen.js';
 import courseFunc from '../../services/courseFunc.js';
 
-app.controller('StudentController', function ($scope, $mdDialog) {
+angular.module('myApp').controller('StudentController', function ($scope, $mdDialog) {
   $scope.studentTableTitles = ['#', 'Họ và tên', 'Tuổi', 'Lớp', 'Thao tác'];
 
   // mặc định trạng thái xem danh sách sinh viên là tất cả
@@ -25,11 +25,18 @@ app.controller('StudentController', function ($scope, $mdDialog) {
   };
 
   /*
+   * Tìm kiếm thông tin sinh viên
+   */
+  $scope.filter = function () {
+    $scope.students = studentFunc.getStudents();
+    $scope.filterByCourse();
+    $scope.filterByText();
+  };
+
+  /*
    * Tìm kiếm thông tin sinh viên dựa trên studentViewCourse
    */
   $scope.filterByCourse = function () {
-    $scope.students = studentFunc.getStudents();
-
     if ($scope.studentViewCourse === 'all') {
       return;
     }
@@ -42,7 +49,9 @@ app.controller('StudentController', function ($scope, $mdDialog) {
    * Tìm kiếm thông tin sinh viên dựa trên studentFindInput
    */
   $scope.filterByText = function () {
-    $scope.students = studentFunc.getStudents();
+    if (!$scope.studentFindInput) {
+      return;
+    }
 
     $scope.students = $scope.students.filter(function (student) {
       var birthDate = new Date(student.birthday);
@@ -62,7 +71,7 @@ app.controller('StudentController', function ($scope, $mdDialog) {
    */
   $scope.deleteStudent = function (id) {
     studentFunc.deleteStudent(id);
-    $scope.students = studentFunc.getStudents();
+    $scope.filter();
   };
 
   /*
