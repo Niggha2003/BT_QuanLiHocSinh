@@ -41,7 +41,7 @@ angular.module('myApp').controller('StudentController', function ($scope, $mdDia
       return;
     }
     $scope.students = $scope.students.filter(function (student) {
-      return student.course === $scope.studentViewCourse;
+      return student.course.name === $scope.studentViewCourse;
     });
   };
 
@@ -60,7 +60,7 @@ angular.module('myApp').controller('StudentController', function ($scope, $mdDia
       return (
         student.name.toLowerCase().includes($scope.studentFindInput) ||
         age.toString().toLowerCase().includes($scope.studentFindInput) ||
-        student.course.toLowerCase().includes($scope.studentFindInput)
+        student.course.name.toLowerCase().includes($scope.studentFindInput)
       );
     });
   };

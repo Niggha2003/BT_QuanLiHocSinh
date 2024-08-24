@@ -82,8 +82,12 @@ var deleteCourse = function (id) {
 
   var deleteCourse = courses.splice(coursesDeleteIndex, 1);
 
-  students = students.filter(function (student) {
-    return student.course !== deleteCourse[0].name;
+  students = students.map(function (student) {
+    console.log(student.course, deleteCourse[0].name);
+    if (student.course.name === deleteCourse[0].name) {
+      student.course.beenDeleted = true;
+    }
+    return student;
   });
 
   localStorageFunc.setData('students', students);

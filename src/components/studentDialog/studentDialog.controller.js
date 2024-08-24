@@ -5,6 +5,13 @@ import courseFunc from '../../services/courseFunc.js';
 angular.module('myApp').controller('StudentDialogController', function ($scope, $mdDialog, student, dialogTitle, id) {
   $scope.student = student;
 
+  if (!$scope.student) {
+    $scope.student = {};
+    $scope.student.course = {
+      beenDeleted: false,
+    };
+  }
+
   // danh sách lớp cho sinh viên
   $scope.courseList = courseFunc.getCourses();
 

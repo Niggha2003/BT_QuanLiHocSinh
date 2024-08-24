@@ -22,7 +22,7 @@
         <td width="10%">{{ index + 1 }}</td>
         <td width="40%">{{ student.name }}</td>
         <td width="15%">{{ calculateAge(student.birthday) }}</td>
-        <td width="15%">{{ student.course }}</td>
+        <td width="15%">{{ student.course.name }} <span ng-if="student.course.beenDeleted"> - Lớp đã bị xóa</span></td>
         <td width="20%">
           <md-button class="student-list-btn--update md-primary" ng-click="studentDialogOpen($event, 'update', student.id, student)">Sửa</md-button>
           <md-button class="student-list-btn--delete md-primary" ng-click="deleteStudent(student.id)">Xóa</md-button>
